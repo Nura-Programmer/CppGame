@@ -10,15 +10,17 @@
 #include <ctime>
 #include "game.h"
 
+using namespace std;
+
 int main()
 {
    long int s;
    time(&s);
   
-   std::string time = ctime(&s);
-   std::cout << "\t\t\t " << time << std::endl;
-   if(time <= "12") std::cout << "\t\t\t Good morining.." << std::endl;
-   else std::cout << "\t\t\t Good Day.." << std::endl; 
+   string time = ctime(&s);
+   cout << "\t\t\t " << time << endl;
+   
+   cout << (time <= "12")? "\t\t\t Good morining.." : "\t\t\t Good Day.." << endl; 
    
    //object
    Game_Base_One game_base_one;
@@ -26,44 +28,32 @@ int main()
    Game_Base_Three game_base_three;
 
 
-   std::string input;
+   string input;
 
-   std::cout << "Select Subject:" << std::endl;
-   std::cout << "1 - Maths \n 2 - English \n 3 - coding" << std::endl;
-   std::cout << " >";
-   std::cin >> input;
+   cout << "Select Subject:" << endl;
+   cout << "1 - Maths \n 2 - English \n 3 - coding \n >";
+   cin >> input;
 
 
-   if(input == "1")
+   switch(input)
    {
-      game_base_one.maths_board();
-      game_base_one.maths_board_result();
-   }
-   else if(input == "2")
-   {
-      game_base_two.english_board();
-      game_base_two.english_board_result();
-   }
-   else if(input == "3")
-   {
-      game_base_three.coding_board();
-      game_base_three.coding_board_result();
-   }
-   else
-   {
-      std::cout << "Wrong selection " << std::endl;
+      case "1":
+         game_base_one.maths_board();
+         game_base_one.maths_board_result();
+      break;
+      case "2":
+         game_base_two.english_board();
+         game_base_two.english_board_result();
+      break;
+      case "3":
+         game_base_three.coding_board();
+         game_base_three.coding_board_result();
+      break;
+      default:
+         cout << "Wrong selection " << endl;
    }
 
 
   return 0;
 
 }
-
-
-
-
-
-
-
-
-
